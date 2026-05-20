@@ -1103,3 +1103,78 @@ cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8
 I learned how to bypass a broken or restricted shell by executing commands directly over SSH before the shell loads. Using a here‑document allowed me to run cat on the password file even though interactive login was blocked. This is a valuable technique for automation, debugging, and working with limited environments in Linux and DevOps.
 
 
+
+# 🐧 Bandit Level 19 → Level 20
+
+---
+
+### **Challenge**
+- You now have the password for bandit19.
+- Your task:
+        - There is a special binary called bandit20-do
+        - This binary runs commands as the user bandit20
+        - You must use it to read the file:
+                                    /etc/bandit_pass/bandit20
+- You cannot read this file normally because you are bandit19, not bandit20.
+- This level teaches how setuid binaries allow privilege escalation in a controlled, safe way.
+
+---
+
+### **What This Level Is Teaching**
+- What a setuid binary is
+- How to run a command as another user
+- How to pass arguments to a binary
+- How Linux permissions can be elevated safely
+
+---
+
+### **Hints (Medium Difficulty)**
+Check the binary permissions:
+
+ls -l bandit20-do
+
+You will see something like:
+
+-rwsr-x--- 1 bandit20 bandit19 12345 Jan 1 00:00 bandit20-do
+
+The s in rws means setuid — it runs as the file owner (bandit20).
+
+You can test it by running:
+
+./bandit20-do whoami
+It should output:
+
+bandit20
+To read the password file, run:
+
+./bandit20-do cat /etc/bandit_pass/bandit20
+
+---
+
+### **Solution (Commands I Used)**
+ls -l bandit20-do
+whoami
+./bandit20-do whoami
+./bandit20-do cat /etc/bandit_pass/bandit20
+
+
+### Explanation
+- bandit20-do is owned by bandit20
+- Because it has the setuid bit, it executes with bandit20’s permissions
+- Running:
+        ./bandit20-do cat /etc/bandit_pass/bandit20
+is equivalent to running:
+sudo -u bandit20 cat /etc/bandit_pass/bandit20
+- This allows you to read the protected password file even though you are logged in as bandit19
+- This is a real Linux privilege‑escalation mechanism used in system administration and DevOps.
+
+###  Password
+0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+
+## Screenshot
+![Level 19 → Level 20 Screenshot](screenshots/level-20-setuid.png)
+
+### What I Learned
+I learned how setuid binaries work and how they allow a user to execute commands with the permissions of another user. By using the bandit20-do binary, I was able to run the cat command as bandit20 and read the protected password file. This is an important concept in Linux privilege management, privilege escalation, and secure system design.
+
+
