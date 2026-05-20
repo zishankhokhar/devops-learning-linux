@@ -36,6 +36,17 @@ Everything here reflects practical command‑line skills used in real engineerin
 
 ## 🎯 Bandit Levels 0–20 Completed
 
+Completed and documented:
+
+- Challenges
+- Objectives
+- Commands used 
+- Solutions 
+- Explanations  
+- Passwords  
+- Screenshots for every level 
+- Learning outcome 
+
 The Bandit wargame helped build real‑world problem‑solving skills, including:
 
 - Finding hidden or unusual files  
