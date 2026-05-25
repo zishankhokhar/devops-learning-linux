@@ -15,10 +15,7 @@ Everything here reflects practical command‑line skills used in real engineerin
 
 ### **Bandit Challenge**
 - bandit-notes.md — solutions, commands used, explanations, and passwords for Levels 0–20  
-- screenshots/ — visual proof of Bandit level completions  
-
-### **Scripts**
-- scripts/hello.sh — simple executable script created while practising permissions and execution  
+- screenshots/ — visual proof of Bandit level completions   
 
 ---
 
